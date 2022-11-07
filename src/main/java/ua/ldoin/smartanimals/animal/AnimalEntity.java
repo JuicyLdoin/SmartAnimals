@@ -199,7 +199,7 @@ public class AnimalEntity {
 
                     getHealthTask().cancel();
 
-                    entities.remove(entity);
+                    entities.remove(parent);
 
                     cancel();
 
@@ -337,6 +337,8 @@ public class AnimalEntity {
         getHealthTask().cancel();
 
         save();
+
+        entities.remove(parent);
 
     }
 }

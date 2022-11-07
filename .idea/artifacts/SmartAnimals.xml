@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="SmartAnimals">
+    <output-path>D:/Server/Test/plugins</output-path>
+    <root id="archive" name="SmartAnimals.jar">
+      <element id="module-output" name="SmartAnimals" />
+    </root>
+  </artifact>
+</component>

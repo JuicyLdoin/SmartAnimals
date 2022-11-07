@@ -17,7 +17,7 @@ public class EntitySpawnListener implements ILoadableListener {
         LivingEntity entity = event.getEntity();
 
         if (EntityUtil.isAnimal(entity))
-            if (event.getSpawnReason().equals(CreatureSpawnEvent.SpawnReason.CUSTOM)) {
+            if (!event.getSpawnReason().equals(CreatureSpawnEvent.SpawnReason.CUSTOM)) {
 
                 ConfigurationSection section = FileUtil.CONFIG.getConfigurationSection("options." + entity.getType().name() + ".spawn");
 

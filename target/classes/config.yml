@@ -1,0 +1,334 @@
+# all materials for >1.12 - https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html
+# all material for <1.13 - https://helpch.at/docs/1.12.2/org/bukkit/Material.html
+#
+# blocks support ID (2) and data (3:2/DIRT:2)
+#
+# all biomes - https://hub.spigotmc.org/javadocs/spigot/org/bukkit/block/Biome.html
+
+# work in worlds
+worlds:
+  - world
+
+# types of creatures that will be treated as animals
+animals:
+  - COW
+  - PIG
+  - CHICKEN
+  - SHEEP
+
+options:
+  # greatly affects performance
+  water_find_radius: 20 # if there is no water in this radius when an animal spawns, it will not spawn
+  food_find_radius: 20 # if there is no food in this radius when an animal spawns, it will not spawn
+
+  water:
+    enabled: true
+
+    # update animal water (in ticks)
+    rate: 20
+
+    # remove water per update
+    remove_per_update: 0.1
+
+    # the amount of water that the animal will receive in 1 sip
+    # you can specify the ratio in % (12%/25%/...) of the maximum value
+    amount_in_sip: 25%
+    sip_rate: 40 # in ticks
+
+    # the animal will remember the last locations in which it drank water, and if it does not find water nearby, it will go to those locations
+    memory:
+      enabled: true
+      size: 10
+
+  hunger:
+    enabled: true
+
+    # update animal hunger (in ticks)
+    rate: 100
+
+    # remove water per update
+    remove_per_update: 0.5
+    sip_rate: 40 # in ticks
+
+  health:
+    enabled: true
+
+    # update animal health (in ticks)
+    rate: 20
+
+    # the amount of damage that will be dealt to the animal once per rate ticks
+    water_damage: 0.25 # when water level <= 0
+    hunger_damage: 0.5 # when hunger level <= 0
+
+    regeneration:
+      # will regenerate an amount of health once per rate ticks
+
+      amount: 0.5
+
+      need:
+        # you can specify the ratio in % (12%/25%/...) of the maximum value
+
+        water: 15 # water is needed for regeneration to occur
+        hunger: 25 # hunger is needed for regeneration to occur
+
+  food:
+
+    # all food types: ITEM, BLOCK, RENEWABLE_BLOCK
+
+    grass:
+      type: REPLACEABLE_BLOCK
+
+      block:
+        before_eat: GRASS # block that the animal will eat
+        after_eat: DIRT # block that will appear in place of the eaten
+
+      regenerate:
+        hunger: 30
+        water: 2
+
+        weight: 0.5
+    tallgrass:
+      type: BLOCK
+
+      block: LONG_GRASS
+
+      regenerate:
+        hunger: 25
+        water: 5
+
+        weight: 0.1
+    wheat_seeds:
+      type: ITEM
+
+      item:
+        remove_amount: 5
+        material: SEEDS
+
+      regenerate: # per 1 remove_amount
+        hunger: 4
+        water: 0
+
+        weight: 0.025
+
+  # adult_in measured in days
+
+  age:
+    enabled: true
+
+    # if false then age will be measured in game days
+    real_age: false
+
+    # when the animal spawns it will get a random age in the range specified in its settings
+    # spawn age in days
+    # work if animal is wild
+    randomize_on_spawn: true
+
+  # item drop can be a custom item (you just need to specify its name)
+  #
+  # breedRate indicated in days
+
+  COW:
+    maxWater: 70
+    maxHunger: 120
+
+    maxWeight:
+      male: 900-1200
+      female: 650-750
+
+    age:
+      adult_in: 540
+      max_age: 7300-9100
+
+    drop:
+      meat:
+        item: RAW_BEEF
+
+        kgRate: 50
+        amount: 1-2
+      leather:
+        item: LEATHER
+
+        kgRate: 120
+        amount: 1-2
+
+    canEat:
+      - grass
+      - tallgrass
+
+    breedRate: 120-150
+
+    spawn:
+      age_range: 500-1800
+
+      biome_blacklist:
+        - DESERT
+        - RIVER
+        - EXTREME_HILLS
+        - EXTREME_HILLS_WITH_TREES
+  PIG:
+    maxWater: 55
+    maxHunger: 100
+
+    maxWeight:
+      male: 300-370
+      female: 200-270
+
+    age:
+      adult_in: 180
+      max_age: 5400-7300
+
+    drop:
+      meat:
+        item: PORK
+
+        kgRate: 40
+        amount: 1-3
+
+    canEat:
+      - grass
+      - tallgrass
+
+    breedRate: 120-150
+
+    spawn:
+      age_range: 150-900
+
+      biome_blacklist:
+        - DESERT
+        - RIVER
+        - EXTREME_HILLS
+        - EXTREME_HILLS_WITH_TREES
+  CHICKEN:
+    maxWater: 40
+    maxHunger: 70
+
+    maxWeight:
+      male: 5.7-6.3
+      female: 3.5-4.5
+
+    age:
+      adult_in: 180
+      max_age: 1800-3600
+
+    drop:
+      meat:
+        item: RAW_CHICKEN
+
+        kgRate: 1.5
+        amount: 1-2
+      feather:
+        item: FEATHER
+
+        kgRate: 1
+        amount: 2-3
+
+    canEat:
+      - grass
+      - tallgrass
+      - wheat_seeds
+
+    breedRate: 120-150
+
+    spawn:
+      age_range: 150-600
+
+      biome_blacklist:
+        - DESERT
+        - RIVER
+        - EXTREME_HILLS
+        - EXTREME_HILLS_WITH_TREES
+  SHEEP:
+    maxWater: 60
+    maxHunger: 80
+
+    maxWeight:
+      male: 70-160
+      female: 45-100
+
+    age:
+      adult_in: 240
+      max_age: 3600-4300
+
+    drop:
+      meat:
+        item: MUTTON
+
+        kgRate: 12
+        amount: 2-3
+      wool:
+        item: WOOL
+
+        kgRate: 20
+        amount: 1-2
+
+    canEat:
+      - grass
+      - tallgrass
+
+    breedRate: 120-150
+
+    spawn:
+      age_range: 200-1200
+
+      biome_blacklist:
+        - DESERT
+        - RIVER
+        - EXTREME_HILLS
+        - EXTREME_HILLS_WITH_TREES
+        - SWAMPLAND
+
+# items support:
+#
+# HEX colors (when server version is 1.16 or higher)
+# Unicode decode
+#
+# customModelData (add custom model data to item (when server version is 1.14 or higher))
+# test:
+#   customModelData: 57248
+#
+# enchantments (add enchantments to item)
+# test:
+#   enchantments:
+#   - ARROW_FIRE-1
+#
+# flags (add item flags to item)
+# test:
+#   flags:
+#   - HIDE_ENCHANTS
+#
+# OPTIONS
+#
+# unbreakable (make item unbreakable)
+# test:
+#   options:
+#     unbreakable: true
+#
+# color (make armor is colored (use RGB format))
+# test:
+#   options:
+#     color: 255 255 255
+
+items:
+  animal_book:
+    material: BOOK
+    name: "&fAnimal Book"
+    lore:
+      - ""
+      - "&fRMB on animal to check his stats."
+      - ""
+
+recipes:
+  animal_book:
+    result: animal_book
+    recipe:
+      - "FCL"
+      - "PRB"
+      - "LMF"
+    ingredients:
+      L: LEATHER
+      F: FEATHER
+      R: RABBIT
+      C: RAW_CHICKEN
+      B: RAW_BEEF
+      P: PORK
+      M: MUTTON

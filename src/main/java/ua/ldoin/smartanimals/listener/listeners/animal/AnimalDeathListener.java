@@ -21,19 +21,22 @@ public class AnimalDeathListener implements ILoadableListener {
 
             AnimalEntity animalEntity = AnimalEntity.getAnimalEntity(entity);
 
-            if (animalEntity != null)
+            if (animalEntity != null) {
+
+                event.getDrops().clear();
+
+                for (AnimalDrop drop : animalEntity.getDrops())
+                    drop.drop(animalEntity);
+
                 new BukkitRunnable() {
 
                     public void run() {
 
-                        for (AnimalDrop drop : animalEntity.getDrops())
-                            drop.drop(animalEntity);
+                        entity.remove();
 
                     }
-                }.runTaskLater(SmartAnimalsPlugin.plugin, 1);
-
-            event.getDrops().clear();
-
+                }.runTaskLater(SmartAnimalsPlugin.plugin, 15);
+            }
         }
     }
 }
