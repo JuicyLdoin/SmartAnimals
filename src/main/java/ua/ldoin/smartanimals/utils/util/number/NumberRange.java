@@ -1,9 +1,12 @@
 package ua.ldoin.smartanimals.utils.util.number;
 
+import lombok.Value;
+
+@Value
 public class NumberRange {
 
-    private final float lesser;
-    private final float larger;
+    float lesser;
+    float larger;
 
     public NumberRange(float number) {
 
@@ -59,21 +62,9 @@ public class NumberRange {
 
     }
 
-    public float getLesser() {
-
-        return lesser;
-
-    }
-
-    public float getLarger() {
-
-        return larger;
-
-    }
-
     public String toString() {
 
-        return lesser + "-" + larger;
+        return lesser + ":" + larger;
 
     }
 }

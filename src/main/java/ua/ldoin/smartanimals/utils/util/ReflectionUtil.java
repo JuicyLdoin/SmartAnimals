@@ -1,11 +1,13 @@
 package ua.ldoin.smartanimals.utils.util;
 
-import com.sun.istack.internal.NotNull;
+import lombok.experimental.UtilityClass;
+import org.jetbrains.annotations.NotNull;
 import ua.ldoin.smartanimals.utils.util.version.VersionManager;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
+@UtilityClass
 public class ReflectionUtil {
 
     public static Class<?> getClass(@NotNull String className) throws ClassNotFoundException {

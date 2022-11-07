@@ -1,11 +1,13 @@
 package ua.ldoin.smartanimals.utils.util;
 
+import lombok.experimental.UtilityClass;
 import net.md_5.bungee.api.ChatColor;
 import ua.ldoin.smartanimals.utils.util.version.VersionManager;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+@UtilityClass
 public class ColorUtil {
 
     public static String makeColor(String str) {

@@ -1,5 +1,8 @@
 package ua.ldoin.smartanimals.animal.task.tasks;
 
+import lombok.AccessLevel;
+import lombok.Data;
+import lombok.experimental.FieldDefaults;
 import org.bukkit.entity.Ageable;
 import org.bukkit.scheduler.BukkitRunnable;
 import ua.ldoin.smartanimals.SmartAnimalsPlugin;
@@ -7,13 +10,15 @@ import ua.ldoin.smartanimals.animal.AnimalEntity;
 import ua.ldoin.smartanimals.animal.task.IAnimalTask;
 import ua.ldoin.smartanimals.utils.util.FileUtil;
 
+@Data
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class AgeTask implements IAnimalTask {
 
-    private AnimalEntity animalEntity;
-    private final BukkitRunnable bukkitRunnable;
+    AnimalEntity animalEntity;
+    final BukkitRunnable bukkitRunnable;
 
-    private int currentDay = 0;
-    private int nextDay = 1;
+    int currentDay = 0;
+    int nextDay = 1;
 
     public AgeTask(AnimalEntity animal) {
 
@@ -53,21 +58,9 @@ public class AgeTask implements IAnimalTask {
 
     }
 
-    public AnimalEntity getAnimalEntity() {
-
-        return animalEntity;
-
-    }
-
     public BukkitRunnable getTask() {
 
         return bukkitRunnable;
-
-    }
-
-    public void setAnimalEntity(AnimalEntity animalEntity) {
-
-        this.animalEntity = animalEntity;
 
     }
 

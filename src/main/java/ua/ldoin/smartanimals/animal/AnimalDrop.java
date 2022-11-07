@@ -1,5 +1,6 @@
 package ua.ldoin.smartanimals.animal;
 
+import lombok.Value;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Sheep;
@@ -9,12 +10,13 @@ import ua.ldoin.smartanimals.utils.util.items.ItemUtil;
 import ua.ldoin.smartanimals.utils.util.number.NumberRange;
 import ua.ldoin.smartanimals.utils.util.number.NumberUtil;
 
+@Value
 public class AnimalDrop {
 
-    private final ItemStack itemStack;
+    ItemStack itemStack;
 
-    private final float kgRate;
-    private final NumberRange amountRange;
+    float kgRate;
+    NumberRange amountRange;
 
     public AnimalDrop(String item, float kgRate, NumberRange amountRange) {
 
@@ -22,24 +24,6 @@ public class AnimalDrop {
 
         this.kgRate = kgRate;
         this.amountRange = amountRange;
-
-    }
-
-    public ItemStack getItemStack() {
-
-        return itemStack;
-
-    }
-
-    public float getKgRate() {
-
-        return kgRate;
-
-    }
-
-    public NumberRange getAmountRange() {
-
-        return amountRange;
 
     }
 

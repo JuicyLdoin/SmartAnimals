@@ -1,5 +1,8 @@
 package ua.ldoin.smartanimals.animal.task.tasks;
 
+import lombok.AccessLevel;
+import lombok.Data;
+import lombok.experimental.FieldDefaults;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.scheduler.BukkitRunnable;
 import ua.ldoin.smartanimals.SmartAnimalsPlugin;
@@ -8,10 +11,12 @@ import ua.ldoin.smartanimals.animal.task.IAnimalTask;
 import ua.ldoin.smartanimals.utils.util.FileUtil;
 import ua.ldoin.smartanimals.utils.util.number.NumberUtil;
 
+@Data
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class HealthTask implements IAnimalTask {
 
-    private AnimalEntity animalEntity;
-    private final BukkitRunnable bukkitRunnable;
+    AnimalEntity animalEntity;
+    final BukkitRunnable bukkitRunnable;
 
     public HealthTask(AnimalEntity animalEntity) {
 
@@ -58,21 +63,9 @@ public class HealthTask implements IAnimalTask {
 
     }
 
-    public AnimalEntity getAnimalEntity() {
-
-        return animalEntity;
-
-    }
-
     public BukkitRunnable getTask() {
 
         return bukkitRunnable;
-
-    }
-
-    public void setAnimalEntity(AnimalEntity animalEntity) {
-
-        this.animalEntity = animalEntity;
 
     }
 

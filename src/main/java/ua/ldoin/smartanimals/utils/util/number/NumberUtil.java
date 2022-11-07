@@ -1,7 +1,10 @@
 package ua.ldoin.smartanimals.utils.util.number;
 
+import lombok.experimental.UtilityClass;
+
 import java.util.concurrent.ThreadLocalRandom;
 
+@UtilityClass
 public class NumberUtil {
 
     public static boolean random(double chance) {

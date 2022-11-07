@@ -1,9 +1,11 @@
 package ua.ldoin.smartanimals.utils.util;
 
+import lombok.experimental.UtilityClass;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
 
+@UtilityClass
 public class LocationUtil {
 
     public static String getLocation(Location location) {

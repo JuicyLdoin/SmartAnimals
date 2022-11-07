@@ -1,5 +1,8 @@
 package ua.ldoin.smartanimals.animal.task.tasks;
 
+import lombok.AccessLevel;
+import lombok.Data;
+import lombok.experimental.FieldDefaults;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -16,14 +19,16 @@ import ua.ldoin.smartanimals.utils.util.number.NumberUtil;
 import java.util.Arrays;
 import java.util.List;
 
+@Data
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class WaterTask implements IAnimalTask {
 
-    private static final ConfigurationSection section = FileUtil.CONFIG.getConfigurationSection("options.water");
+    static final ConfigurationSection section = FileUtil.CONFIG.getConfigurationSection("options.water");
 
-    private AnimalEntity animalEntity;
-    private final BukkitRunnable bukkitRunnable;
+    AnimalEntity animalEntity;
+    final BukkitRunnable bukkitRunnable;
 
-    private Location targetWaterLocation;
+    Location targetWaterLocation;
 
     public WaterTask(AnimalEntity animal) {
 
@@ -61,21 +66,9 @@ public class WaterTask implements IAnimalTask {
 
     }
 
-    public AnimalEntity getAnimalEntity() {
-
-        return animalEntity;
-
-    }
-
     public BukkitRunnable getTask() {
 
         return bukkitRunnable;
-
-    }
-
-    public void setAnimalEntity(AnimalEntity animalEntity) {
-
-        this.animalEntity = animalEntity;
 
     }
 
@@ -170,7 +163,7 @@ public class WaterTask implements IAnimalTask {
         }
     }
 
-    private int nextDrink;
+    int nextDrink;
 
     public int generateDrink() {
 

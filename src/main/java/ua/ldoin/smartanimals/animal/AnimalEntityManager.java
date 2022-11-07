@@ -13,6 +13,7 @@ import ua.ldoin.smartanimals.utils.util.FileUtil;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class AnimalEntityManager implements IUnLoadable {
 
@@ -43,7 +44,7 @@ public class AnimalEntityManager implements IUnLoadable {
 
     public void unload() {
 
-        for (File file : FileUtil.ANIMALS_DATA_PARENT.listFiles())
+        for (File file : Objects.requireNonNull(FileUtil.ANIMALS_DATA_PARENT.listFiles()))
             file.delete();
 
         AnimalEntity.saveAll();

@@ -2,6 +2,7 @@ package ua.ldoin.smartanimals.utils.util.items;
 
 import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.properties.Property;
+import lombok.experimental.UtilityClass;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.configuration.ConfigurationSection;
@@ -18,6 +19,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
+@UtilityClass
 public class ItemUtil {
 
     public static String color(String string) {

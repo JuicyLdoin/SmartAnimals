@@ -1,7 +1,9 @@
 package ua.ldoin.smartanimals.utils.util.version;
 
+import lombok.experimental.UtilityClass;
 import org.bukkit.Bukkit;
 
+@UtilityClass
 public class VersionManager {
 
     public static String getVersion() {

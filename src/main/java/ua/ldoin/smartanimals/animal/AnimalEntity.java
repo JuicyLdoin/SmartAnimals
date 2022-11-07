@@ -1,5 +1,8 @@
 package ua.ldoin.smartanimals.animal;
 
+import lombok.AccessLevel;
+import lombok.Data;
+import lombok.experimental.FieldDefaults;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -19,6 +22,8 @@ import ua.ldoin.smartanimals.utils.util.version.nms.NMSEntity;
 import java.io.File;
 import java.util.*;
 
+@Data
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class AnimalEntity {
 
     public static final Map<Entity, AnimalEntity> entities = new HashMap<>();
@@ -42,19 +47,19 @@ public class AnimalEntity {
 
     }
 
-    private final LivingEntity parent;
-    private final NMSEntity nmsEntity;
+    final LivingEntity parent;
+    final NMSEntity nmsEntity;
 
-    private AnimalState animalState;
+    AnimalState animalState;
 
-    private final AnimalGender gender;
+    final AnimalGender gender;
 
-    private final List<AnimalDrop> drops;
+    final List<AnimalDrop> drops;
 
-    private int nextBreed;
+    int nextBreed;
 
-    private final Map<String, AnimalStats> stats;
-    private final Map<String, IAnimalTask> tasks;
+    final Map<String, AnimalStats> stats;
+    final Map<String, IAnimalTask> tasks;
 
     public AnimalEntity(LivingEntity entity, boolean child) {
 
@@ -209,42 +214,6 @@ public class AnimalEntity {
             save();
 
         entities.put(entity, this);
-
-    }
-
-    public NMSEntity getNmsEntity() {
-
-        return nmsEntity;
-
-    }
-
-    public LivingEntity getParent() {
-
-        return parent;
-
-    }
-
-    public AnimalState getAnimalState() {
-
-        return animalState;
-
-    }
-
-    public AnimalGender getGender() {
-
-        return gender;
-
-    }
-
-    public List<AnimalDrop> getDrops() {
-
-        return drops;
-
-    }
-
-    public int getNextBreed() {
-
-        return nextBreed;
 
     }
 

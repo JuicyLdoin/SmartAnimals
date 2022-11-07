@@ -1,5 +1,8 @@
 package ua.ldoin.smartanimals.animal.task.tasks;
 
+import lombok.AccessLevel;
+import lombok.Data;
+import lombok.experimental.FieldDefaults;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -24,15 +27,17 @@ import ua.ldoin.smartanimals.utils.util.number.NumberUtil;
 import java.util.ArrayList;
 import java.util.List;
 
+@Data
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class HungerTask implements IAnimalTask {
 
-    private static final ConfigurationSection section = FileUtil.CONFIG.getConfigurationSection("options.hunger");
+    static final ConfigurationSection section = FileUtil.CONFIG.getConfigurationSection("options.hunger");
 
-    private AnimalEntity animalEntity;
-    private final BukkitRunnable bukkitRunnable;
+    AnimalEntity animalEntity;
+    final BukkitRunnable bukkitRunnable;
 
-    private Location targetFoodLocation;
-    private Food targetFood;
+    Location targetFoodLocation;
+    Food targetFood;
 
     public HungerTask(AnimalEntity animal) {
 
@@ -70,21 +75,9 @@ public class HungerTask implements IAnimalTask {
 
     }
 
-    public AnimalEntity getAnimalEntity() {
-
-        return animalEntity;
-
-    }
-
     public BukkitRunnable getTask() {
 
         return bukkitRunnable;
-
-    }
-
-    public void setAnimalEntity(AnimalEntity animalEntity) {
-
-        this.animalEntity = animalEntity;
 
     }
 

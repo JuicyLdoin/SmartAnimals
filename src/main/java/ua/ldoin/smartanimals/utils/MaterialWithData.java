@@ -1,12 +1,14 @@
 package ua.ldoin.smartanimals.utils;
 
+import lombok.Value;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 
+@Value
 public class MaterialWithData {
 
-    private final Material material;
-    private final byte data;
+    Material material;
+    byte data;
 
     public MaterialWithData(Block block) {
 
@@ -19,13 +21,6 @@ public class MaterialWithData {
 
         this.material = material;
         this.data = 0;
-
-    }
-
-    public MaterialWithData(Material material, byte data) {
-
-        this.material = material;
-        this.data = data;
 
     }
 
@@ -59,18 +54,6 @@ public class MaterialWithData {
             throw new IllegalArgumentException("Unable to convert id to integer and data to byte");
 
         }
-    }
-
-    public Material getMaterial() {
-
-        return material;
-
-    }
-
-    public byte getData() {
-
-        return data;
-
     }
 
     public void applyToBlock(Block block) {

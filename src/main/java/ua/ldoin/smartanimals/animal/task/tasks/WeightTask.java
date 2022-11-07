@@ -1,5 +1,8 @@
 package ua.ldoin.smartanimals.animal.task.tasks;
 
+import lombok.AccessLevel;
+import lombok.Data;
+import lombok.experimental.FieldDefaults;
 import org.bukkit.Material;
 import org.bukkit.entity.Item;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -11,12 +14,14 @@ import ua.ldoin.smartanimals.utils.util.items.ItemUtil;
 import java.util.ArrayList;
 import java.util.List;
 
+@Data
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class WeightTask implements IAnimalTask {
 
     public static final List<Item> items = new ArrayList<>();
 
-    private AnimalEntity animalEntity;
-    private final BukkitRunnable bukkitRunnable;
+    AnimalEntity animalEntity;
+    final BukkitRunnable bukkitRunnable;
 
     public WeightTask(AnimalEntity animal) {
 
@@ -78,21 +83,9 @@ public class WeightTask implements IAnimalTask {
 
     }
 
-    public AnimalEntity getAnimalEntity() {
-
-        return animalEntity;
-
-    }
-
     public BukkitRunnable getTask() {
 
         return bukkitRunnable;
-
-    }
-
-    public void setAnimalEntity(AnimalEntity animalEntity) {
-
-        this.animalEntity = animalEntity;
 
     }
 
